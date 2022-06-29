@@ -1,5 +1,6 @@
 # qr.py
 
+
 import argparse
 import qrcode
 
@@ -73,7 +74,10 @@ def read_user_cli_args():
     return parser.parse_args()
 
 
-def convert_error_correction(error):
+def convert_error_correction():
+    """
+    """
+
     if user_args.e == "L":
         user_args.e = qrcode.constants.ERROR_CORRECT_L
         return
@@ -89,6 +93,9 @@ def convert_error_correction(error):
 
 
 def build_qr_code(url, version, error):
+    """
+    """
+
     qr = qrcode.QRCode(
         version=version,
         error_correction=error,
@@ -113,5 +120,5 @@ def build_qr_code(url, version, error):
 
 if __name__ == "__main__":
     user_args = read_user_cli_args()
-    convert_error_correction(user_args.e)
+    convert_error_correction()
     build_qr_code(user_args.url, user_args.v, user_args.e)
